@@ -5,6 +5,8 @@ use core::{
     ops::{Add, Div, Mul, Neg, Rem, Sub},
 };
 use num_traits::float::FloatCore;
+use serde::Deserialize;
+use serde::Serialize;
 
 macro_rules! impl_binop {
     ($for:ident, $is:ident, $op:ident, $func_name:ident) => {
@@ -32,7 +34,7 @@ macro_rules! float {
         );
     };
     ($for:ident, $rep:ident, $is:ident, $sign_bit:expr) => {
-        #[derive(Copy, Clone)]
+        #[derive(Copy, Clone, Deserialize, Serialize)]
         pub struct $for($rep);
 
         impl_binop!($for, $is, Add, add);

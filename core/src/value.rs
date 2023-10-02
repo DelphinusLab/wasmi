@@ -4,6 +4,7 @@ use crate::{
 };
 use core::{f32, fmt, fmt::Display, i32, i64, u32, u64};
 use parity_wasm::elements as pwasm;
+use serde::{Deserialize, Serialize};
 
 /// Type of a value.
 ///
@@ -64,7 +65,7 @@ impl ValueType {
 ///
 /// There is no distinction between signed and unsigned integer types. Instead, integers are
 /// interpreted by respective operations as either unsigned or signed in two’s complement representation.
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub enum Value {
     /// Value of 32-bit signed or unsigned integer.
     I32(i32),
